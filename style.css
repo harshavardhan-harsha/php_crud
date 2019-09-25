@@ -1,0 +1,13 @@
+.form-container {
+  width: 300px;
+  margin: auto;
+}
+
+table th {
+  text-align: center;
+}
+
+.text-prim {
+  color: rgb(27, 127, 221);
+  text-align: center;
+}
