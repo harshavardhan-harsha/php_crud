@@ -10,7 +10,12 @@
     <title>Contacts Details</title>
 </head>
 <body>
-<?php require_once "process.php"; ?>
+<?php
+require_once "process.php";
+$mysqli = new mysqli('localhost', 'root', '', 'phpcrud') or die(mysql_error($mysqli));
+$result = $mysqli->query("SELECT * FROM contacts") or die($mysqli->error);
+?>
+
 <?php
 if (isset($_SESSION['message'])): ?>
 <div class="alert alert-<?php echo $_SESSION['msg-type']; ?>">
@@ -21,10 +26,6 @@ unset($_SESSION['message']);
 </div>
 <?php endif; ?>
 
-<?php
-$mysqli = new mysqli('localhost', 'root', '', 'phpcrud') or die(mysql_error($mysqli));
-$result = $mysqli->query("SELECT * FROM contacts") or die($mysqli->error);
-?>
 <div class="container">
     <h1 class="text-prim">Contacts List</h1>
     <table class='table table-bordered table-hover'>
@@ -79,15 +80,3 @@ while ($row = $result->fetch_assoc()): ?>
 </div>
 </body>
 </html>
-
-
-
-<?php
-// pre($result->fetch_assoc());
-// pre($result->fetch_assoc());
-// function pre($array)
-// {
-//  echo "<pre>";
-//  print_r($array);
-//  echo "</pre>";
-// } ?>
